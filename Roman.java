@@ -4,20 +4,28 @@ public class Roman extends Kniha{
 	
 	private int cisloZaner;
 	private string zaner;
+	
+    private static final Map<Integer, String> zanryMapa = new HashMap<>();
+    
+    static {
+        zanryMapa.put(1, "Romanticky");
+        zanryMapa.put(2, "Historicky");
+        zanryMapa.put(3, "Sci-fi");
+        zanryMapa.put(4, "Detektivni");
+        zanryMapa.put(5, "Fantasy");
+    }
 
-	public Roman(String nazov, String autor, int rok_vydania, boolean dostupnost, string zaner) {
+	public Roman(String nazov, String autor, int rok_vydania, boolean dostupnost, int cisloZaner) {
 		super(nazov, autor, rok_vydania, dostupnost);
-		this.CisloZaner = zaner;
-		// TODO Auto-generated constructor stub
-	}
+		this.zaner = zanryMapa.get(cisloZaner);}
 	
-	public int getCisloZaner() {
-		return this.CisloZaner;
-	}
-	
-	public void setZaner(int CisloZaner) {
-		this.CisloZaner = this.zaner;
-	}
+    public String getZaner() {
+        return this.zaner;
+    }
+    
+    public void setZaner(int cisloZaner) {
+        this.zaner = zanryMapa.get(cisloZaner);
+    }
 	
 	public void infoKniha() {
 		System.out.println("Nazov knihy: " + this.getNazov());
