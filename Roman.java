@@ -1,22 +1,36 @@
+import java.util.HashMap;
+import java.util.Map;
+
+
 package balicek;
 
 public class Roman extends Kniha{
 	
 	private int cisloZaner;
 	private string zaner;
+	
+    private static final Map<Integer, String> zanryMapa = new HashMap<>();
+    
+    static {
+        zanryMapa.put(1, "Romanticky");
+        zanryMapa.put(2, "Historicky");
+        zanryMapa.put(3, "Sci-fi");
+        zanryMapa.put(4, "Detektivni");
+        zanryMapa.put(5, "Fantasy");
+    }
 
-	public Roman(String nazov, String autor, int rok_vydania, boolean dostupnost, string zaner) {
+	public Roman(String nazov, String autor, int rok_vydania, boolean dostupnost, int cisloZaner) {
 		super(nazov, autor, rok_vydania, dostupnost);
-		this.CisloZaner = zaner;
+		this.zaner = zanryMapa.get(cisloZaner);
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int getCisloZaner() {
-		return this.CisloZaner;
+	public int getZaner() {
+		return this.zaner;
 	}
 	
 	public void setZaner(int CisloZaner) {
-		this.CisloZaner = this.zaner;
+		this.zaner = zanryMapa.get(cisloZaner);
 	}
 	
 	public void infoKniha() {
