@@ -46,8 +46,8 @@ public class Test {
 						int rok_vydaniaKnihy = sc.nextInt();
 						System.out.println("Zadaj rok vydania");
 						boolean dostupnost = sc.nextBoolean();
-						System.out.println("Zadaj zaner");
-						String zaner = sc.next();
+						System.out.println("Zadaj zaner: 1 - romanticky, 2-historicky, 3-sci-fi, 4-detektivni, 5-fantasy");
+						int CisloZaner = sc.next();
 						
 						policka[0] = new Roman(nazovKnihy, autorKnihy, rok_vydaniaKnihy, dostupnost, zaner);
 						
