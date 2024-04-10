@@ -29,7 +29,7 @@ public class Roman extends Kniha{
 		return this.zaner;
 	}
 	
-	public void setZaner(int CisloZaner) {
+	public void setZaner(int cisloZaner) {
 		this.zaner = zanryMapa.get(cisloZaner);
 	}
 	
