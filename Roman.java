@@ -2,20 +2,21 @@ package balicek;
 
 public class Roman extends Kniha{
 	
-	private String zaner;
+	private int cisloZaner;
+	private string zaner;
 
-	public Roman(String nazov, String autor, int rok_vydania, boolean dostupnost, String zaner) {
+	public Roman(String nazov, String autor, int rok_vydania, boolean dostupnost, string zaner) {
 		super(nazov, autor, rok_vydania, dostupnost);
-		this.zaner = zaner;
+		this.CisloZaner = zaner;
 		// TODO Auto-generated constructor stub
 	}
 	
-	public String getZaner() {
-		return this.zaner;
+	public int getCisloZaner() {
+		return this.CisloZaner;
 	}
 	
-	public void setZaner(String zaner) {
-		this.zaner = zaner;
+	public void setZaner(int CisloZaner) {
+		this.CisloZaner = this.zaner;
 	}
 	
 	public void infoKniha() {
