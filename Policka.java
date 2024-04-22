@@ -17,37 +17,18 @@ public class Policka {
 		sc=new Scanner(System.in);
 	}
 	
-	public void setKniha()
+	public void setRoman(String nazovKnihy, String autorKnihy, int rok_vydaniaKnihy, boolean dostupnost, int CisloZaner )
 	{
-		System.out.println("Zadaj typ knihy: roman(true)/ucebnica(false)");
-		String typ_knihy= sc.next();
-		switch(typ_knihy) {
-			case "roman":
-				System.out.println("Zadaj nazov knihy");
-				String nazov=sc.next();
-				System.out.println("Zadaj autor knihy");
-				String autor=sc.next();
-				System.out.println("Zadaj rok vydania knihy");
-				int rok_vydania=sc.nextInt();
-				System.out.println("Zadaj rok vydania knihy");
-				boolean dostupnost=sc.nextBoolean();
-				System.out.println("Zadaj zaner romanu");
-				String zaner=sc.next();
-				naPolicke[poslednaKniha++]=new Roman(nazov, autor, rok_vydania, dostupnost, zaner );
-			case "ucebnica":
-				System.out.println("Zadaj nazov knihy");
-				String Nazov=sc.next();
-				System.out.println("Zadaj autor knihy");
-				String Autor=sc.next();
-				System.out.println("Zadaj rok vydania knihy");
-				int rokVydania=sc.nextInt();
-				System.out.println("Zadaj rok vydania knihy");
-				boolean dostupna =sc.nextBoolean();
-				System.out.println("Zadaj rocnik ucebnice");
-				int rocnik=sc.nextInt();
-				naPolicke[poslednaKniha++]=new Ucebnice(Nazov, Autor, rokVydania, dostupna, rocnik);
-		}
-				
+		
+			naPolicke[poslednaKniha]=new Roman(nazovKnihy, autorKnihy, rok_vydaniaKnihy, dostupnost, CisloZaner);
+			poslednaKniha++;
+	}
+
+	public void setUcebnica(String nazovKnihy, String autorKnihy, int rok_vydaniaKnihy, boolean dostupnost, int rocnik ) 
+	{
+			
+			naPolicke[poslednaKniha]=new Ucebnice(nazovKnihy, autorKnihy, rok_vydaniaKnihy, dostupnost, rocnik);
+			poslednaKniha++;		
 	}
 	
 	public Kniha getKniha(int idx)
@@ -62,13 +43,20 @@ public class Policka {
 	{
 		for (int i = 0; i < poslednaKniha ;i++) 
 		{
-			System.out.print("Meno: "+naPolicke[i].getNazov()+"\t Autor: "+naPolicke[i].getAutor()+"\t Rok: "+naPolicke[i].getRok_vydania());
+			System.out.print("Nazov: "+naPolicke[i].getNazov()+"\nAutor: "+naPolicke[i].getAutor()+"\nRok: "+naPolicke[i].getRok_vydania()+"\n");
 			if(naPolicke[i].getDostupnost()) {
 				System.out.println("Volna");	
 			}
 			else {
 				System.out.println("Nedostupna");
 			}
+			if(naPolicke[i] instanceof Roman) {
+				System.out.println("Zaner: "+ ((Roman)naPolicke[i]).getZaner());
+			}
+			else {
+				System.out.println("Rocnik: "+ ((Ucebnice)naPolicke[i]).getRocnik()+".");
+			}
+			System.out.println("");
 		}
 	}
 		
