@@ -43,7 +43,7 @@ public class Test {
 			switch(volba)
 			{
 				case 1:
-								boolean typKnihy = true;
+					boolean typKnihy = true;
 					int typ;
 					while(typKnihy) {
 					System.out.println("Zadaj typ knihy:");
@@ -83,11 +83,46 @@ public class Test {
 					System.out.println("Kniha je zadana.");					
 					break;
 				case 2:
-					System.out.println("Zadaj nazov knihy, ktoru chces upravit");
-					
-					System.out.println("");
-					
-					System.out.println("");
+					System.out.println("Zadaj nazov knihy, ktoru chces upravit:");
+					String nazev = sc.nextLine();
+					int i = mojaPolicka.najdiIndexNazov(nazev);
+					Kniha upravovana = mojaPolicka.getKniha(i);
+					System.out.println("Co chces upravit?");
+					System.out.println("Nazov ... 1		Dostupnost ... 4");
+					System.out.println("Autor ... 2		Zaner 	   ... 5");
+					System.out.println("Rok   ... 3		Rocnik	   ... 6");
+					int zmena;
+					try {
+						zmena = sc.nextInt();
+					}
+					catch (NullPointerException e) {
+						System.out.println("Zadaj cislo.");
+						zmena = sc.nextInt();
+					}
+					catch (InputMismatchException e) {
+						System.out.println("Zadaj cislo.");
+						zmena = sc.nextInt();
+					}
+					switch(zmena) {
+					case 1:
+						System.out.println("Zadaj novy nazov:");
+						upravovana.setNazov(sc.nextLine());
+					case 2:
+						System.out.println("Zadaj noveho autora:");
+						upravovana.setAutor(sc.nextLine());
+					case 3:
+						System.out.println("Zadaj novy rok:");
+						upravovana.setRok_vydania(sc.nextInt());
+					case 4:
+						upravovana.zmenDostupnost();
+					case 5:
+						System.out.println("Zadaj novy zaner:");
+						((Roman)upravovana).setZaner(sc.nextInt());
+					case 6:
+						System.out.println("Zadaj novy rocnik:");
+						((Ucebnice)upravovana).setRocnik(sc.nextInt());
+					}
+					System.out.println("Zmena zaznamenana.");
 					
 					break;
 				case 3:
@@ -95,23 +130,37 @@ public class Test {
 									
 					break;
 				case 4:
+					System.out.println("Zadaj nazov knihy, ktoru chces upravit:");
+					String nazov = sc.next();
+					int idx = mojaPolicka.najdiIndexNazov(nazov);
+					Kniha menena = mojaPolicka.getKniha(idx);
+					menena.zmenDostupnost();
+					System.out.println("Zmena zaznamenana.");
 					break;
 				case 5:
+					mojaPolicka.vypisKnihy();
 					break;
 				case 6:
-					
+					System.out.println("Zadaj nazov knihy:");
+					String nazovKnihy = sc.next();
+					int index = mojaPolicka.najdiIndexNazov(nazovKnihy);
+					mojaPolicka.getKniha(index);
 					break;
 				case 7:
 					
 					break;
 				case 8:
-					run = false;
+					System.out.println("Zadaj zaner: Romanticky, Historicky, Sci-fi, Detektivni, Fantasy");
+					String zaner = sc.next();
+					mojaPolicka.vypisPodlaZanra(zaner);
 					break;
 				case 9:
 					run = false;
 					break;
 				case 10:
-					run = false;
+					System.out.println("Zadaj nazov knihy: ");
+					String nazov_knihy = sc.next();
+					mojaPolicka.ulozTo(nazov_knihy);
 					break;
 				case 11:
 					run = false;
