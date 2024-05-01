@@ -40,6 +40,7 @@ public class Test {
 			System.out.println("*---*---*---*---*---*---*---*");
 		
 			volba = sc.nextInt();
+			sc.nextLine();
 			switch(volba)
 			{
 				case 1:
@@ -50,12 +51,13 @@ public class Test {
 					System.out.println("1 ... Roman");
 					System.out.println("2 ... Ucebnica");
 					typ = sc.nextInt();
+					sc.next();
 					if (typ==1) {
 						typKnihy=false;
 						System.out.println("Zadaj nazov knihy");
-						String nazovKnihy = sc.next();
+						String nazovKnihy = sc.nextLine();
 						System.out.println("Zadaj autora knihy");
-						String autorKnihy = sc.next();
+						String autorKnihy = sc.nextLine();
 						System.out.println("Zadaj rok vydania");
 						int rok_vydaniaKnihy = sc.nextInt();
 						System.out.println("Zadaj dostupnost (true/false)");
@@ -68,9 +70,9 @@ public class Test {
 					if (typ==2) {
 						typKnihy=false;
 						System.out.println("Zadaj nazov knihy");
-						String nazovKnihy = sc.next();
+						String nazovKnihy = sc.nextLine();
 						System.out.println("Zadaj autora knihy");
-						String autorKnihy = sc.next();
+						String autorKnihy = sc.nextLine();
 						System.out.println("Zadaj rok vydania");
 						int rok_vydaniaKnihy = sc.nextInt();
 						System.out.println("Zadaj dostupnost (true/false)");
@@ -155,7 +157,7 @@ public class Test {
 					mojaPolicka.vypisPodlaZanra(zaner);
 					break;
 				case 9:
-					run = false;
+					mojaPolicka.suPozicane();
 					break;
 				case 10:
 					System.out.println("Zadaj nazov knihy: ");

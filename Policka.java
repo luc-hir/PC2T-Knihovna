@@ -124,19 +124,19 @@ public class Policka {
 	public void ulozTo(String nazovKnihy) throws IOException {
 		int i = 0;
 		for (int j = 0; j<poslednaKniha; j++) {
-			i++;
 			if ((naPolicke[i].getNazov().compareTo(nazovKnihy))>=0) {
 				break;
 	        }
+			i++;
 		}
 		FileWriter fw = new FileWriter(naPolicke[i].getNazov());
 		BufferedWriter bw=new BufferedWriter(fw);
-		bw.write("Meno: "+naPolicke[i].getNazov()+"\t Autor: "+naPolicke[i].getAutor()+"\t Rok: "+naPolicke[i].getRok_vydania());
+		fw.write("Meno: "+naPolicke[i].getNazov()+"\t Autor: "+naPolicke[i].getAutor()+"\t Rok: "+naPolicke[i].getRok_vydania());
 		if(naPolicke[i].getDostupnost()) {
 			bw.write("Dostupna");
 		}
 		else {
-			bw.write("Dostupna");
+			bw.write("Nedostupna");
 		}
 		if(naPolicke[i] instanceof Roman) {
 			bw.write("Zaner: "+((Roman)naPolicke[i]).getZaner());
