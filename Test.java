@@ -22,6 +22,7 @@ public class Test {
 		Scanner sc=new Scanner(System.in);
 		int volba;
 		boolean run=true;
+		String nazov_knihy;
 		while(run){
 			System.out.println("*---*---*---*---*---*---*---*");
 			System.out.println("Vyberte cinnost:");
@@ -129,12 +130,11 @@ public class Test {
 					break;
 				case 3:
 					mojaPolicka.vypisKnihy();
-									
 					break;
 				case 4:
 					System.out.println("Zadaj nazov knihy, ktoru chces upravit:");
-					String nazov = sc.next();
-					int idx = mojaPolicka.najdiIndexNazov(nazov);
+					nazov_knihy = sc.next();
+					int idx = mojaPolicka.najdiIndexNazov(nazov_knihy);
 					Kniha menena = mojaPolicka.getKniha(idx);
 					menena.zmenDostupnost();
 					System.out.println("Zmena zaznamenana.");
@@ -144,8 +144,8 @@ public class Test {
 					break;
 				case 6:
 					System.out.println("Zadaj nazov knihy:");
-					String nazovKnihy = sc.next();
-					int index = mojaPolicka.najdiIndexNazov(nazovKnihy);
+					nazov_knihy = sc.next();
+					int index = mojaPolicka.najdiIndexNazov(nazov_knihy);
 					mojaPolicka.getKniha(index);
 					break;
 				case 7:

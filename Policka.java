@@ -124,47 +124,62 @@ public class Policka {
 	public void ulozTo(String nazovKnihy) throws IOException {
 		int i = 0;
 		for (int j = 0; j<poslednaKniha; j++) {
-			if ((naPolicke[i].getNazov().compareTo(nazovKnihy))>=0) {
+			if (naPolicke[i].getNazov().equals(nazovKnihy)) {
 				break;
-	        }
+				}
 			i++;
 		}
-		FileWriter fw = new FileWriter(naPolicke[i].getNazov());
-		BufferedWriter bw=new BufferedWriter(fw);
-		fw.write("Meno: "+naPolicke[i].getNazov()+"\t Autor: "+naPolicke[i].getAutor()+"\t Rok: "+naPolicke[i].getRok_vydania());
-		if(naPolicke[i].getDostupnost()) {
-			bw.write("Dostupna");
+		try {
+			FileWriter fw = new FileWriter(naPolicke[i].getNazov()+".txt");
+			BufferedWriter bw=new BufferedWriter(fw);
+			fw.write("Meno: "+naPolicke[i].getNazov()+"\nAutor: "+naPolicke[i].getAutor()+"\nRok: "+naPolicke[i].getRok_vydania());
+			if(naPolicke[i].getDostupnost()) {
+				bw.write("\nDostupna");
+			}
+			else {
+				bw.write("\nNedostupna");
+			}
+			if(naPolicke[i] instanceof Roman) {
+				bw.write("\nZaner: "+((Roman)naPolicke[i]).getZaner());
+			}
+			else {
+				bw.write("\nRocnik: "+((Ucebnice)naPolicke[i]).getRocnik());
+			
+			}
+			bw.close();
+			fw.close();
+			
 		}
-		else {
-			bw.write("Nedostupna");
-		}
-		if(naPolicke[i] instanceof Roman) {
-			bw.write("Zaner: "+((Roman)naPolicke[i]).getZaner());
-		}
-		else {
-			bw.write("Rocnik: "+((Ucebnice)naPolicke[i]).getRocnik());
-		}
-	}
-		
+		catch(IOException e) {
+			System.out.println("Nepodarilo sa vytvorit subor.");
+		}			
+	}	
+
 	public void nacitajTo(String fileName) throws IOException {
-		FileReader fr = new FileReader(fileName);
-		BufferedReader br = new BufferedReader(fr);
+		try {
+			FileReader fr = new FileReader(fileName);
+			BufferedReader br = new BufferedReader(fr);
 		
 		String line=br.readLine();
-		String words[]=line.split(":");
+		String words[]=line.split(" ");
 		
 		int pocet_prvkov = Integer.parseInt(words[1]);
 		naPolicke=new Kniha[pocet_prvkov];
 		poslednaKniha=0;
 		
 		while ((line= br.readLine())!=null) {
-			words = line.split(";");
-			Kniha kniha=new Kniha(words[0], Integer.parseInt(words[1]));
+			words = line.split("");
+			
 			
 			}
 		br.close();
-		fr.close();
+		fr.close();	
+		}
+		catch(FileNotFoundException e) {
+			System.out.println("Subor sa nenasiel.");
+		}		
 	}
+	
 		
 	private Scanner sc;
 	private Kniha [] naPolicke;
