@@ -197,13 +197,15 @@ public class Policka {
 		}
 	}
 
-	public void smazKniha(int index) {
-
-	for (int i = index; i < naPolicke.length - 1; i++) {
+	public Kniha smazKniha(int index) {
+        int i = 0;
+	for ( i = index; i < naPolicke.length - 1; i++) {
         naPolicke[i] = naPolicke[i + 1];
           }
 	naPolicke[naPolicke.length - 1] = null;
 	poslednaKniha--;
+
+	return naPolicke[i];
 	}
 	
 }
