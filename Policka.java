@@ -11,6 +11,11 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Policka {
+
+	private Scanner sc;
+	private Kniha [] naPolicke;
+	private int poslednaKniha;
+	
 	public Policka()
 	{
 		sc=new Scanner(System.in);
@@ -27,6 +32,11 @@ public class Policka {
 	{
 			
 			naPolicke[poslednaKniha++]=new Ucebnice(nazovKnihy, autorKnihy, rok_vydaniaKnihy, dostupnost, rocnik);		
+	}
+
+	public Kniha getKniha(int idx)
+	{
+		return naPolicke[idx];
 	}
 	
 	public void vypisPodlaZanra(String zaner) {
@@ -87,7 +97,8 @@ public class Policka {
 		
 	public void vypisKnihy() 
 	{
-		for (int i = 0; i < poslednaKniha ;i++) 
+		Arrays.sort(naPolicke, Porovnani.comparing(Kniha::getNazov));
+		for (int i = 0; i < poslednaKniha; i++) 
 		{
 			System.out.print("Nazov: "+naPolicke[i].getNazov()+"\nAutor: "+naPolicke[i].getAutor()+"\nRok: "+naPolicke[i].getRok_vydania()+"\n");
 			if(naPolicke[i].getDostupnost()) {
@@ -159,30 +170,30 @@ public class Policka {
 		try {
 			FileReader fr = new FileReader(fileName);
 			BufferedReader br = new BufferedReader(fr);
-		
-		String line=br.readLine();
-		String words[]=line.split(" ");
-		
-		int pocet_prvkov = Integer.parseInt(words[1]);
-		naPolicke=new Kniha[pocet_prvkov];
-		poslednaKniha=0;
-		
-		while ((line= br.readLine())!=null) {
-			words = line.split("");
+				
+			String line;
 			
-			
+			while ((line= br.readLine())!=null) {
+				String[] words = line.split("");
+				for(String word : words) {
+					System.out.print(word);
+				}
 			}
-		br.close();
-		fr.close();	
+			System.out.println();
+			br.close();
+			fr.close();	
 		}
 		catch(FileNotFoundException e) {
 			System.out.println("Subor sa nenasiel.");
 		}		
 	}
-	
-		
-	private Scanner sc;
-	private Kniha [] naPolicke;
-	private int poslednaKniha;
+
+	public void smazKniha(int index) {
+	for (int i = index; i < naPolicke.length - 1; i++) {
+        naPolicke[i] = naPolicke[i + 1];
+          }
+	naPolicke[naPolicke.length - 1] = null;
+	poslednaKniha--;
+	}
 	
 }
