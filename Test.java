@@ -54,7 +54,7 @@ public class Test {
 					System.out.println("1 ... Roman");
 					System.out.println("2 ... Ucebnica");
 					typ = sc.nextInt();
-					sc.next();
+					sc.nextLine();
 					if (typ==1) {
 						typKnihy=false;
 						System.out.println("Zadaj nazov knihy");
