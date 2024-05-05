@@ -129,7 +129,10 @@ public class Test {
 					
 					break;
 				case 3:
-					mojaPolicka.vypisKnihy();
+					System.out.println("Zadaj nazov knihy, ktoru chces smazat:");
+					String nazev = sc.nextLine();
+					int i = mojaPolicka.najdiIndexNazov(nazev);
+					Kniha naSmazani = mojaPolicka.smazKniha(i);
 					break;
 				case 4:
 					System.out.println("Zadaj nazov knihy, ktoru chces upravit:");
