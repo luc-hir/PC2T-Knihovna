@@ -45,6 +45,15 @@ public abstract class Kniha {
 		this.dostupnost = dostupnost;
 	}
 	
+public void zmenDostupnost() {
+		if(this.dostupnost) {
+			this.dostupnost = false;
+		}
+		else{
+			this.dostupnost = true;
+		}
+	}
+
 	public abstract void infoKniha();
 
 }
