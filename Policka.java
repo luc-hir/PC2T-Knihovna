@@ -179,7 +179,13 @@ public class Policka {
 			System.out.println("Subor sa nenasiel.");
 		}		
 	}
+	public void smazKniha(int index) {
+	for (int i = index; i < mojaPolicka.length - 1; i++) {
+        mojaPolicka[i] = mojaPolicka[i + 1];
+          }
+	mojaPolicka[mojaPolicka.length - 1] = null;
 	
+	}
 		
 	private Scanner sc;
 	private Kniha [] naPolicke;
