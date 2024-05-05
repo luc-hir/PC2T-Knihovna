@@ -164,7 +164,9 @@ public class Test {
 					mojaPolicka.getKniha(index);
 					break;
 				case 7:
-					
+					System.out.println("Zadaj jmeno autora:");
+					String string = sc.next();
+					mojaPolicka.najdiKnihuAutor(string);
 					break;
 				case 8:
 					System.out.println("Zadaj zaner: Romanticky, Historicky, Sci-fi, Detektivni, Fantasy");
