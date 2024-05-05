@@ -3,7 +3,7 @@ package balicek;
 public class Roman extends Kniha{
 	
 	private int cisloZaner;
-	private string zaner;
+	private String zaner;
 	
     private static final Map<Integer, String> zanryMapa = new HashMap<>();
     

@@ -7,7 +7,6 @@ public class Ucebnice extends Kniha {
 	public Ucebnice(String nazov, String autor, int rok_vydania, boolean dostupnost, int rocnik) {
 		super(nazov, autor, rok_vydania, dostupnost);
 		this.rocnik = rocnik;
-		// TODO Auto-generated constructor stub
 	}
 	
 	public int getRocnik() {

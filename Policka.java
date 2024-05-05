@@ -2,6 +2,7 @@ package balicek;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,6 +12,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.Arrays;
 import java.util.Comparator;
+
 
 public class Policka {
 
@@ -99,7 +101,7 @@ public class Policka {
 		
 	public void vypisKnihy() 
 	{
-		Arrays.sort(naPolicke, Porovnani.comparing(Kniha::getNazov));
+		
 		for (int i = 0; i < poslednaKniha; i++) 
 
 		{
@@ -162,7 +164,7 @@ public class Policka {
 			}
 			bw.close();
 			fw.close();
-			
+			System.out.println("Subor vytvoreny.");
 		}
 		catch(IOException e) {
 			System.out.println("Nepodarilo sa vytvorit subor.");

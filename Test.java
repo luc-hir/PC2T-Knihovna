@@ -1,15 +1,17 @@
 package balicek;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Test {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
+	public static void main(String[] args) throws Exception {
+				
 		Policka mojaPolicka= new Policka();
 		mojaPolicka.setRoman("Makova Valka", "R. F. Kuang", 2018, false, 5);
 		mojaPolicka.setRoman("Stoparuv pruvodce galaxii", "Douglas Adams", 1979, false, 3);
@@ -130,9 +132,10 @@ public class Test {
 					break;
 				case 3:
 					System.out.println("Zadaj nazov knihy, ktoru chces smazat:");
-					String nazev = sc.nextLine();
-					int i = mojaPolicka.najdiIndexNazov(nazev);
-					Kniha naSmazani = mojaPolicka.smazKniha(i);
+					nazov_knihy = sc.nextLine();
+					int i = mojaPolicka.najdiIndexNazov(nazov_knihy);
+					mojaPolicka.smazKniha(i);
+					System.out.println("Kniha smazana.");
 					break;
 				case 4:
 					System.out.println("Zadaj nazov knihy, ktoru chces upravit:");
@@ -156,7 +159,7 @@ public class Test {
 					break;
 				case 8:
 					System.out.println("Zadaj zaner: Romanticky, Historicky, Sci-fi, Detektivni, Fantasy");
-					String zaner = sc.next();
+					String zaner = sc.nextLine();
 					mojaPolicka.vypisPodlaZanra(zaner);
 					break;
 				case 9:
@@ -164,11 +167,13 @@ public class Test {
 					break;
 				case 10:
 					System.out.println("Zadaj nazov knihy: ");
-					String nazov_knihy = sc.next();
+					nazov_knihy = sc.nextLine();
 					mojaPolicka.ulozTo(nazov_knihy);
 					break;
 				case 11:
-					run = false;
+					System.out.println("Zadaj nazov knihy: ");
+					nazov_knihy = sc.nextLine();
+					mojaPolicka.nacitajTo(nazov_knihy+".txt");
 					break;
 				case 12:
 					run = false;
