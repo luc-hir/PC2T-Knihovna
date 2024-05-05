@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class Policka {
 	public Policka()
@@ -87,6 +89,7 @@ public class Policka {
 		
 	public void vypisKnihy() 
 	{
+		Arrays.sort(naPolicke, Porovnani.comparing(Kniha::getNazov));
 		for (int i = 0; i < poslednaKniha ;i++) 
 		{
 			System.out.print("Nazov: "+naPolicke[i].getNazov()+"\nAutor: "+naPolicke[i].getAutor()+"\nRok: "+naPolicke[i].getRok_vydania()+"\n");
