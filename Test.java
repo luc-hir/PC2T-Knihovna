@@ -99,34 +99,43 @@ public class Test {
 					int zmena;
 					try {
 						zmena = sc.nextInt();
+						sc.nextLine();
 					}
 					catch (NullPointerException e) {
 						System.out.println("Zadaj cislo.");
 						zmena = sc.nextInt();
+						sc.nextLine();
 					}
 					catch (InputMismatchException e) {
 						System.out.println("Zadaj cislo.");
 						zmena = sc.nextInt();
+						sc.nextLine();
 					}
 					switch(zmena) {
-					case 1:
-						System.out.println("Zadaj novy nazov:");
-						upravovana.setNazov(sc.nextLine());
-					case 2:
-						System.out.println("Zadaj noveho autora:");
-						upravovana.setAutor(sc.nextLine());
-					case 3:
-						System.out.println("Zadaj novy rok:");
-						upravovana.setRok_vydania(sc.nextInt());
-					case 4:
-						upravovana.zmenDostupnost();
-					case 5:
-						System.out.println("Zadaj novy zaner:");
-						((Roman)upravovana).setZaner(sc.nextInt());
-					case 6:
-						System.out.println("Zadaj novy rocnik:");
-						((Ucebnice)upravovana).setRocnik(sc.nextInt());
-					}
+						case 1:
+							System.out.println("Zadaj novy nazov:");
+							upravovana.setNazov(sc.nextLine());
+							break;
+						case 2:
+							System.out.println("Zadaj noveho autora:");
+							upravovana.setAutor(sc.nextLine());
+							break;
+						case 3:
+							System.out.println("Zadaj novy rok:");
+							upravovana.setRok_vydania(sc.nextInt());
+							break;
+						case 4:
+							upravovana.zmenDostupnost();
+							break;
+						case 5:
+							System.out.println("Zadaj novy zaner:");
+							((Roman)upravovana).setZaner(sc.nextInt());
+							break;
+						case 6:
+							System.out.println("Zadaj novy rocnik:");
+							((Ucebnice)upravovana).setRocnik(sc.nextInt());
+							break;
+						}
 					System.out.println("Zmena zaznamenana.");
 					
 					break;
