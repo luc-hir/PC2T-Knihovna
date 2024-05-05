@@ -13,6 +13,11 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class Policka {
+
+	private Scanner sc;
+	private Kniha [] naPolicke;
+	private int poslednaKniha;
+	
 	public Policka()
 	{
 		sc=new Scanner(System.in);
@@ -29,6 +34,11 @@ public class Policka {
 	{
 			
 			naPolicke[poslednaKniha++]=new Ucebnice(nazovKnihy, autorKnihy, rok_vydaniaKnihy, dostupnost, rocnik);		
+	}
+
+	public Kniha getKniha(int idx)
+	{
+		return naPolicke[idx];
 	}
 	
 	public void vypisPodlaZanra(String zaner) {
@@ -90,7 +100,8 @@ public class Policka {
 	public void vypisKnihy() 
 	{
 		Arrays.sort(naPolicke, Porovnani.comparing(Kniha::getNazov));
-		for (int i = 0; i < poslednaKniha ;i++) 
+		for (int i = 0; i < poslednaKniha; i++) 
+
 		{
 			System.out.print("Nazov: "+naPolicke[i].getNazov()+"\nAutor: "+naPolicke[i].getAutor()+"\nRok: "+naPolicke[i].getRok_vydania()+"\n");
 			if(naPolicke[i].getDostupnost()) {
@@ -162,20 +173,19 @@ public class Policka {
 		try {
 			FileReader fr = new FileReader(fileName);
 			BufferedReader br = new BufferedReader(fr);
-		
-		String line;
-			
+
 				
-		while ((line= br.readLine())!=null) {
-			words = line.split("");
-			for (Strind word : words){
-				System.out.print(word);
-			}
+			String line;
 			
-		}
-		System.out.println();
-		br.close();
-		fr.close();	
+			while ((line= br.readLine())!=null) {
+				String[] words = line.split("");
+				for(String word : words) {
+					System.out.print(word);
+				}
+			}
+			System.out.println();
+			br.close();
+			fr.close();	
 		}
 		catch(FileNotFoundException e) {
 			System.out.println("Subor sa nenasiel.");
@@ -186,15 +196,12 @@ public class Policka {
 	}
 
 	public void smazKniha(int index) {
-	for (int i = index; i < mojaPolicka.length - 1; i++) {
-        mojaPolicka[i] = mojaPolicka[i + 1];
+
+	for (int i = index; i < naPolicke.length - 1; i++) {
+        naPolicke[i] = naPolicke[i + 1];
           }
-	mojaPolicka[mojaPolicka.length - 1] = null;
-	
+	naPolicke[naPolicke.length - 1] = null;
+	poslednaKniha--;
 	}
-		
-	private Scanner sc;
-	private Kniha [] naPolicke;
-	private int poslednaKniha;
 	
 }
