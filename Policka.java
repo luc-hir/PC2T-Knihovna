@@ -163,25 +163,28 @@ public class Policka {
 			FileReader fr = new FileReader(fileName);
 			BufferedReader br = new BufferedReader(fr);
 		
-		String line=br.readLine();
-		String words[]=line.split(" ");
-		
-		int pocet_prvkov = Integer.parseInt(words[1]);
-		naPolicke=new Kniha[pocet_prvkov];
-		poslednaKniha=0;
-		
+		String line;
+			
+				
 		while ((line= br.readLine())!=null) {
 			words = line.split("");
-			
-			
+			for (Strind word : words){
+				System.out.print(word);
 			}
+			
+		}
+		System.out.println();
 		br.close();
 		fr.close();	
 		}
 		catch(FileNotFoundException e) {
 			System.out.println("Subor sa nenasiel.");
-		}		
+		}
+		catch(IOException e) {
+			System.out.println("Chyba pri citani zo suboru.");
+		}
 	}
+
 	public void smazKniha(int index) {
 	for (int i = index; i < mojaPolicka.length - 1; i++) {
         mojaPolicka[i] = mojaPolicka[i + 1];
