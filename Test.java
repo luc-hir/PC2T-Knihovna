@@ -141,10 +141,9 @@ public class Test {
 					break;
 				case 3:
 					System.out.println("Zadaj nazov knihy, ktoru chces smazat:");
-					nazov_knihy = sc.nextLine();
-					int i = mojaPolicka.najdiIndexNazov(nazov_knihy);
-					mojaPolicka.smazKniha(i);
-					System.out.println("Kniha smazana.");
+					String nazev1 = sc.nextLine();
+					int i1 = mojaPolicka.najdiIndexNazov(nazev1);
+					Kniha naSmazani = mojaPolicka.smazKniha(i1);
 					break;
 				case 4:
 					System.out.println("Zadaj nazov knihy, ktoru chces upravit:");
