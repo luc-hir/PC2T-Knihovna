@@ -148,7 +148,7 @@ public class Test {
 					break;
 				case 4:
 					System.out.println("Zadaj nazov knihy, ktoru chces upravit:");
-					nazov_knihy = sc.next();
+					nazov_knihy = sc.nextLine();
 					int idx = mojaPolicka.najdiIndexNazov(nazov_knihy);
 					Kniha menena = mojaPolicka.getKniha(idx);
 					menena.zmenDostupnost();
@@ -159,13 +159,13 @@ public class Test {
 					break;
 				case 6:
 					System.out.println("Zadaj nazov knihy:");
-					nazov_knihy = sc.next();
+					nazov_knihy = sc.nextLine();
 					int index = mojaPolicka.najdiIndexNazov(nazov_knihy);
 					mojaPolicka.getKniha(index);
 					break;
 				case 7:
 					System.out.println("Zadaj jmeno autora:");
-					String string = sc.next();
+					String string = sc.nextLine();
 					mojaPolicka.najdiKnihuAutor(string);
 					break;
 				case 8:

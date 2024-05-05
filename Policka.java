@@ -160,7 +160,6 @@ public class Policka {
 			}
 			else {
 				bw.write("\nRocnik: "+((Ucebnice)naPolicke[i]).getRocnik());
-			
 			}
 			bw.close();
 			fw.close();
@@ -175,8 +174,6 @@ public class Policka {
 		try {
 			FileReader fr = new FileReader(fileName);
 			BufferedReader br = new BufferedReader(fr);
-
-				
 			String line;
 			
 			while ((line= br.readLine())!=null) {
@@ -198,14 +195,14 @@ public class Policka {
 	}
 
 	public Kniha smazKniha(int index) {
-        int i = 0;
-	for ( i = index; i < naPolicke.length - 1; i++) {
-        naPolicke[i] = naPolicke[i + 1];
-          }
-	naPolicke[naPolicke.length - 1] = null;
-	poslednaKniha--;
+		int i = 0;
+		for (i = index; i < naPolicke.length - 1; i++) {
+			naPolicke[i] = naPolicke[i + 1];
+			}
+		naPolicke[naPolicke.length - 1] = null;
+		poslednaKniha--;
 
-	return naPolicke[i];
+		return naPolicke[i];
 	}
 	
 }
